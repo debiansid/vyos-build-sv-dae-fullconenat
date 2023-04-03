@@ -47,8 +47,7 @@ jobs:
         --architecture amd64 \
         --build-by naa0yama@aoya6i.com \
         --build-type release \
-        --version ${{ env.RELEASE_VERSION }} \
-        iso
+        --version ${{ env.RELEASE_VERSION }} iso
 
 
     - name: ls
