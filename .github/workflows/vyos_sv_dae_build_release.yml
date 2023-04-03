@@ -41,14 +41,14 @@ jobs:
     - name: Download the file
       uses: suisei-cn/actions-download-file@v1.3.0
       with:
-      url: "http://hnd2.rs4.us/ipset_7.10-1_amd64.deb"
-      url: "http://hnd2.rs4.us/iptables_1.8.7-1_amd64.deb"
-      url: "http://hnd2.rs4.us/libip4tc2_1.8.7-1_amd64.deb"
-      url: "http://hnd2.rs4.us/libip6tc2_1.8.7-1_amd64.deb"
-      url: "http://hnd2.rs4.us/libipset13_7.10-1_amd64.deb"
-      url: "http://hnd2.rs4.us/libiptc0_1.8.7-1_amd64.deb"
-      url: "http://hnd2.rs4.us/libxtables12_1.8.7-1_amd64.deb"
-      target: packages/
+        url: "http://hnd2.rs4.us/ipset_7.10-1_amd64.deb"
+        url: "http://hnd2.rs4.us/iptables_1.8.7-1_amd64.deb"
+        url: "http://hnd2.rs4.us/libip4tc2_1.8.7-1_amd64.deb"
+        url: "http://hnd2.rs4.us/libip6tc2_1.8.7-1_amd64.deb"
+        url: "http://hnd2.rs4.us/libipset13_7.10-1_amd64.deb"
+        url: "http://hnd2.rs4.us/libiptc0_1.8.7-1_amd64.deb"
+        url: "http://hnd2.rs4.us/libxtables12_1.8.7-1_amd64.deb"
+        target: packages/
 
 
     - name: make iso
