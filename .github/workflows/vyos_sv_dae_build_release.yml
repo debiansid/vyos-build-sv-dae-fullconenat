@@ -35,7 +35,7 @@ jobs:
       run: |
         set -eux
         
-        git clone  https://github.com/debiansid/vyos-build-dae-fullconenat
+        git clone  https://github.com/debiansid/vyos-build-dae-fullconenat vyos-build
 
 
     - name: make iso
