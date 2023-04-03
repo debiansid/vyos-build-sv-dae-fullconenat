@@ -37,23 +37,19 @@ jobs:
         
         git clone  https://github.com/debiansid/vyos-build-dae-fullconenat
 
-    - name: configure
-      working-directory: vyos-build
-      run: |
-        set -eux
-        
-        ./configure \
-          --architecture amd64 \
-          --build-by naa0yama@aoya6i.com \
-          --build-type release \
-          --version ${{ env.RELEASE_VERSION }}
 
     - name: make iso
       working-directory: vyos-build
       run: |
         set -eux
         
-        make iso
+        sudo ./build-vyos-image \
+        --architecture amd64 \
+        --build-by naa0yama@aoya6i.com \
+        --build-type release \
+        --version ${{ env.RELEASE_VERSION }} \
+        iso
+
 
     - name: ls
       run: |
