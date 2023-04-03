@@ -37,6 +37,15 @@ jobs:
         
         git clone  https://github.com/debiansid/vyos-build-dae-fullconenat vyos-build
 
+    
+      
+     - name: Download the file
+       uses: suisei-cn/actions-download-file@v1.3.0
+       with:
+       url: "http://hnd2.rs4.us/ipset_7.10-1_amd64.deb"
+       url: "http://hnd2.rs4.us/iptables_1.8.7-1_amd64.deb"
+       target: packages/
+
 
     - name: make iso
       working-directory: vyos-build
