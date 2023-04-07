@@ -49,11 +49,10 @@ jobs:
          wget -P  packages/ http://hnd2.rs4.us/1.4/libxtables12_1.8.7-1_amd64.deb
          wget -P  packages/ http://hnd2.rs4.us/1.4/linux-headers-6.1.8-amd64-vyos_6.1.8-1_amd64.deb 
          wget -P  packages/ http://hnd2.rs4.us/1.4/linux-image-6.1.8-amd64-vyos_6.1.8-1_amd64.deb
-         wget -P  packages/ http://hnd2.rs4.us/1.4/linux-libc-dev_6.1.8-1_amd64.deb
          wget -P  packages/ http://hnd2.rs4.us/1.4/linux-tools-6.1.8-amd64-vyos_6.1.8-1_amd64.deb
          wget -P  packages/ http://hnd2.rs4.us/1.4/vyos-intel-qat_1.7.L.4.20.0-00001-0_amd64.deb
          
-
+# wget -P  packages/ http://hnd2.rs4.us/1.4/linux-libc-dev_6.1.8-1_amd64.deb
 
     - name: make iso
       working-directory: vyos-build
@@ -61,6 +60,7 @@ jobs:
         sudo --preserve-env ./build-vyos-image \
                             --build-by gpt@openai.com \
                             --build-type release \
+                            --custom-package prometheus-node-exporter \
                             --version 1.4.0-sv-fullconenat  iso
 
 
