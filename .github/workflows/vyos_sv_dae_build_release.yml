@@ -32,7 +32,7 @@ jobs:
       run: |
         set -eux
         
-        git clone  https://github.com/debiansid/vyos-build-sv-fullconenat vyos-build
+        git clone  https://github.com/debiansid/vyos-build-sv vyos-build
 
     
       
