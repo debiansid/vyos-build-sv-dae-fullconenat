@@ -9,6 +9,5 @@ packages = [
   "grub2",
   "grub-pc",
   "vyos-linux-firmware",
-  "vyos-intel-qat",
   "telegraf"
 ]
