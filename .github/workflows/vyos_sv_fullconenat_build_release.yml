@@ -1,13 +1,10 @@
-name: VyOS SV Build
-
+name: VyOS 1.4 sv fullconenat Build and Release
+permissions:
+  contents: write
 on:
-  workflow_dispatch:
   push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
+    tags:
+      - "*"
 
 jobs:
   build:
@@ -72,8 +69,14 @@ jobs:
         ls -lah
         ls -lah vyos-build/build
 
-    - name: Upload artifact
-      uses: actions/upload-artifact@v3
-      with: 
-          name: vyos-${{ env.RELEASE_VERSION }}-amd64.iso
-          path: vyos-build/build/vyos-${{ env.RELEASE_VERSION }}-amd64.iso
+    - name: Upload release
+      uses: softprops/action-gh-release@v1
+      with:
+          tag_name: ${{ github.ref_name }}
+          files: vyos-build/build/vyos-${{ env.RELEASE_VERSION }}-amd64.iso
+          body: |
+            VyOS ${{ env.RELEASE_VERSION }} LTS
+          draft: true
+          prerelease: true
+          
+
