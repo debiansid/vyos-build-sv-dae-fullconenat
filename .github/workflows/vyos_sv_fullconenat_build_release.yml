@@ -23,8 +23,8 @@ jobs:
     steps:
     - name: Set env
       run: |
-        echo "RELEASE_VERSION=1.4.0-sv-dae-fullconenat" >> $GITHUB_ENV 
-
+       # echo "RELEASE_VERSION=1.4.0-sv-dae-fullconenat" >> $GITHUB_ENV 
+        echo "RELEASE_VERSION=${GITHUB_REF:10}" >> $GITHUB_ENV 
     - name: git clone vyos-build
       run: |
         set -eux
@@ -75,7 +75,8 @@ jobs:
                             --build-by gpt@openai.com \
                             --build-type release \
                             --custom-package prometheus-node-exporter \
-                            --version 1.4.0-sv-fullconenat  iso
+                            --version ${{ env.RELEASE_VERSION }} iso
+                          # --version 1.4.0-sv-fullconenat  iso
 
 
     - name: ls
