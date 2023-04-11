@@ -23,7 +23,7 @@ jobs:
     steps:
     - name: Set env
       run: |
-        echo "RELEASE_VERSION=1.4.0-sv-fullconenat" >> $GITHUB_ENV 
+        echo "RELEASE_VERSION=1.4.0-sv-dae-fullconenat" >> $GITHUB_ENV 
 
     - name: git clone vyos-build
       run: |
