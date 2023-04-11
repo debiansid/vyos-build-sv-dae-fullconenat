@@ -51,7 +51,7 @@ jobs:
         # wget -P  packages/ http://hnd2.rs4.us/1.4/linux-libc-dev_6.1.8-1_amd64.deb
     
     - name: build kernel
-        run |
+      run:  |
         set -eux
         pwd
         cd vyos-build/packages/linux-kernel
@@ -61,7 +61,7 @@ jobs:
         ./build-kernel.sh
         cp *.deb ../
     - name: make deb
-        run |
+      run: |
         set -eux
         pwd
         cd vyos-build/packages/linux-kernel
