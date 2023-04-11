@@ -43,7 +43,7 @@ EOF
 
 echo "I: Build Debian Kernel package"
 touch .scmversion
-make bindeb-pkg BUILD_TOOLS=1 LOCALVERSION=${KERNEL_SUFFIX} KDEB_PKGVERSION=${KERNEL_VERSION}-1 -j $(getconf _NPROCESSORS_ONLN)
+make bindeb-pkg BUILD_TOOLS=1 INSTALL_MOD_STRIP=1 LOCALVERSION=${KERNEL_SUFFIX} KDEB_PKGVERSION=${KERNEL_VERSION}-1 -j $(getconf _NPROCESSORS_ONLN)
 
 cd $CWD
 if [[ $? == 0 ]]; then
