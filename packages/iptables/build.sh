@@ -11,4 +11,4 @@ fi
 
 cd ${SRC}
 echo "I: Build Debian Package"
-dpkg-buildpackage -Pnoguile -uc -us -tc -b
+DEB_BUILD_OPTIONS=noddebs dpkg-buildpackage -uc -us -tc -b
