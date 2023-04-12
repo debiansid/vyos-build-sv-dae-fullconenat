@@ -80,18 +80,6 @@ Description: netfilter xtables library
  This package contains the user-space interface to the Netfilter xtables
  kernel framework.
 
-Package: libxtables-dev
-Architecture: linux-any
-Multi-Arch: same
-Pre-Depends: ${misc:Pre-Depends}
-Depends: libxtables12 (=${binary:Version}), ${misc:Depends}
-Section: libdevel
-Description: netfilter xtables library -- development files
- The iptables/xtables framework has been replaced by nftables. You should
- consider migrating now.
- .
- This package includes the development files of libxtables.
-
 Package: libiptc0
 Architecture: linux-any
 Multi-Arch: same
@@ -99,20 +87,6 @@ Depends: libip4tc2 (=${binary:Version}), ${misc:Depends}
 Section: oldlibs
 Description: transitional dummy package
  This is a transitional package. It can safely be removed.
-
-Package: libiptc-dev
-Architecture: linux-any
-Multi-Arch: same
-Depends: libip4tc-dev (=${binary:Version}),
-         libip6tc-dev (=${binary:Version}),
-         ${misc:Depends}
-Breaks: libip4tc-dev (<< 1.8.4-2)
-Section: libdevel
-Description: Common development files for libiptc
- The iptables/xtables framework has been replaced by nftables. You should
- consider migrating now.
- .
- This package provides development files (pkg-config) for libiptc.
 
 Package: libip4tc2
 Multi-Arch: same
@@ -132,20 +106,6 @@ Description: netfilter libip4tc library
  This library has been considered private for years (and still is), in the
  sense of changing symbols and backward compatibility not guaranteed.
 
-Package: libip4tc-dev
-Architecture: linux-any
-Multi-Arch: same
-Pre-Depends: ${misc:Pre-Depends}
-Depends: libip4tc2 (=${binary:Version}), ${misc:Depends}
-Replaces: libiptc-dev (<< 1.8.4-2)
-Breaks: libiptc-dev (<< 1.8.4-2)
-Section: libdevel
-Description: Development files for libip4tc
- The iptables/xtables framework has been replaced by nftables. You should
- consider migrating now.
- .
- This package provides development files and static libraries for libip4tc.
-
 Package: libip6tc2
 Multi-Arch: same
 Architecture: linux-any
@@ -163,15 +123,3 @@ Description: netfilter libip6tc library
  .
  This library has been considered private for years (and still is), in the
  sense of changing symbols and backward compatibility not guaranteed.
-
-Package: libip6tc-dev
-Architecture: linux-any
-Multi-Arch: same
-Pre-Depends: ${misc:Pre-Depends}
-Depends: libip6tc2 (=${binary:Version}), ${misc:Depends}
-Section: libdevel
-Description: Development files for libip6tc
- The iptables/xtables framework has been replaced by nftables. You should
- consider migrating now.
- .
- This package provides development files and static libraries for libip6tc.
