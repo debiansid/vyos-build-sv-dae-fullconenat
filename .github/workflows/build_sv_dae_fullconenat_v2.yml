@@ -1,4 +1,4 @@
-name: VyOS 1.4 sv dae fullconenat Build and Release
+name: Build and Release V2
 permissions:
   contents: write
 on:
