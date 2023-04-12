@@ -65,13 +65,13 @@ jobs:
 #        ./build-kernel.sh
 #        cp *.deb ../
         
-    - name: make deb
-      run: |
-        set -eux
-        pwd
-        cd vyos-build/packages/linux-kernel
-        ./build-intel-qat.sh
-        cp vyos-intel-qat*.deb ../
+#    - name: make deb
+#      run: |
+#        set -eux
+#        pwd
+#        cd vyos-build/packages/linux-kernel
+#        ./build-intel-qat.sh
+#        cp vyos-intel-qat*.deb ../
     
     - name: make iptables deb
       run: |
