@@ -2,7 +2,7 @@
 CWD=$(pwd)
 set -e
 
-SRC=iptables-1.8.9
+SRC=pkg-iptables
 if [ ! -d ${SRC} ]; then
     echo "Source directory does not exists, please 'git clone'"
     exit 1
