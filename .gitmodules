@@ -1,3 +1,0 @@
-[submodule "packages/iptables/pkg-iptables"]
-	path = packages/iptables/pkg-iptables
-	url = https://salsa.debian.org/pkg-netfilter-team/pkg-iptables.git
