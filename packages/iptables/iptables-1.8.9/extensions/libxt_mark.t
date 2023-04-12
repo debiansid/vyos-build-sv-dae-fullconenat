@@ -1,7 +1,8 @@
 :INPUT,FORWARD,OUTPUT
--j MARK --set-xmark 0xfeedcafe/0xfeedcafe;=;OK
--j MARK --set-xmark 0x0;-j MARK --set-xmark 0x0/0xffffffff;OK
--j MARK --set-xmark 4294967295;-j MARK --set-xmark 0xffffffff/0xffffffff;OK
--j MARK --set-xmark 4294967296;;FAIL
--j MARK --set-xmark -1;;FAIL
--j MARK;;FAIL
+-m mark --mark 0xfeedcafe/0xfeedcafe;=;OK
+-m mark --mark 0x0;=;OK
+-m mark --mark 4294967295;-m mark --mark 0xffffffff;OK
+-m mark --mark 4294967296;;FAIL
+-m mark --mark -1;;FAIL
+-m mark;;FAIL
+-s 1.2.0.0/15 -m mark --mark 0x0/0xff0;=;OK

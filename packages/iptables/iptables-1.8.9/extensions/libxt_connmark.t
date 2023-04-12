@@ -1,7 +1,9 @@
 :PREROUTING,FORWARD,OUTPUT,POSTROUTING
 *mangle
--j CONNMARK --restore-mark;-j CONNMARK --restore-mark --nfmask 0xffffffff --ctmask 0xffffffff;OK
--j CONNMARK --save-mark;-j CONNMARK --save-mark --nfmask 0xffffffff --ctmask 0xffffffff;OK
--j CONNMARK --save-mark --nfmask 0xfffffff --ctmask 0xffffffff;=;OK
--j CONNMARK --restore-mark --nfmask 0xfffffff --ctmask 0xffffffff;=;OK
--j CONNMARK;;FAIL
+-m connmark --mark 0xffffffff;=;OK
+-m connmark --mark 0xffffffff/0xffffffff;-m connmark --mark 0xffffffff;OK
+-m connmark --mark 0xffffffff/0x0;=;OK
+-m connmark --mark 0/0xffffffff;-m connmark --mark 0x0;OK
+-m connmark --mark -1;;FAIL
+-m connmark --mark 0xfffffffff;;FAIL
+-m connmark;;FAIL
