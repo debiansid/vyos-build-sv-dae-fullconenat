@@ -35,8 +35,7 @@ jobs:
       run: |
         set -eux
         
-        git clone  -b dev https://github.com/debiansid/vyos-build-sv-dae-fullconenat vyos-build
-
+        git clone -b current --single-branch https://github.com/vyos/vyos-build
     
       
     - name: Download deb package 
