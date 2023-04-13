@@ -1,4 +1,0 @@
-#!/bin/sh
-export KERNEL_VERSION=6.1.8
-export KERNEL_SUFFIX=-amd64-vyos
-export KERNEL_DIR=/vyos/packages/linux-kernel/linux
