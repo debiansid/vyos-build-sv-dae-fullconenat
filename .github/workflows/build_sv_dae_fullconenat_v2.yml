@@ -45,14 +45,12 @@ jobs:
          cd vyos-build
          wget -P  packages/ http://http.us.debian.org/debian/pool/main/i/ipset/libipset13_7.17-1_amd64.deb
          wget -P  packages/ http://http.us.debian.org/debian/pool/main/i/ipset/ipset_7.17-1_amd64.deb
-         wget -P  packages/ http://hnd2.rs4.us/1.4/vyos-intel-qat_1.7.L.4.20.0-00001-0_amd64.deb
          wget -P  packages/ http://hnd2.rs4.us/1.4/iptables_1.8.9-2_amd64.deb
          wget -P  packages/ http://hnd2.rs4.us/1.4/libip4tc2_1.8.9-2_amd64.deb 
          wget -P  packages/ http://hnd2.rs4.us/1.4/libip6tc2_1.8.9-2_amd64.deb
-     
          wget -P  packages/ http://hnd2.rs4.us/1.4/libiptc0_1.8.9-2_amd64.deb
          wget -P  packages/ http://hnd2.rs4.us/1.4/libxtables12_1.8.9-2_amd64.deb
-         
+         # wget -P  packages/ http://hnd2.rs4.us/1.4/vyos-intel-qat_1.7.L.4.20.0-00001-0_amd64.deb
     - name: Download kernel deb from my another repo
       uses: robinraju/release-downloader@v1.7
       with:
