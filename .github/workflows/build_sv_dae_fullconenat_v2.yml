@@ -92,7 +92,7 @@ jobs:
         sudo --preserve-env ./build-vyos-image \
                             --build-by gpt@openai.com \
                             --build-type release \
-                            --custom-package prometheus-node-exporter \
+                            --custom-package prometheus-node-exporter pahole dwarves \
                             --version ${{ env.RELEASE_VERSION }} iso
                             
           
