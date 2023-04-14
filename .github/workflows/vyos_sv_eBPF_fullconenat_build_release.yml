@@ -37,7 +37,7 @@ jobs:
 
     
       
-    - name: Download deb from my server
+    - name: Download deb from upstream
       run:  |
          set -eux
          cd vyos-build
