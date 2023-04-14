@@ -2,9 +2,10 @@ name: Build and Release V2
 permissions:
   contents: write
 on:
-  push:
-    tags:
-      - "*"
+  workflow_dispatch:
+#  push:
+#    tags:
+#      - "test"
 
 jobs:
   build:
