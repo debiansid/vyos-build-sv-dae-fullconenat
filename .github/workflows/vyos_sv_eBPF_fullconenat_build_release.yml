@@ -4,7 +4,7 @@ permissions:
 on:
   push:
     tags:
-      - "*sv*"
+      - "*"
 
 jobs:
   build:
