@@ -1,10 +1,10 @@
-name: VyOS 1.4 sv dae fullconenat Build and Release
+name: VyOS 1.4 sv eBFP fullconenat Build and Release
 permissions:
   contents: write
 on:
   push:
     tags:
-      - "dae*"
+      - "*sv*"
 
 jobs:
   build:
@@ -41,36 +41,26 @@ jobs:
       run:  |
          set -eux
          cd vyos-build
-         wget -P  packages/ http://hnd2.rs4.us/1.4/ipset_7.10-1_amd64.deb 
-         wget -P  packages/ http://hnd2.rs4.us/1.4/iptables_1.8.7-1_amd64.deb
-         wget -P  packages/ http://hnd2.rs4.us/1.4/libip4tc2_1.8.7-1_amd64.deb 
-         wget -P  packages/ http://hnd2.rs4.us/1.4/libip6tc2_1.8.7-1_amd64.deb
-         wget -P  packages/ http://hnd2.rs4.us/1.4/libipset13_7.10-1_amd64.deb
-         wget -P  packages/ http://hnd2.rs4.us/1.4/libiptc0_1.8.7-1_amd64.deb
-         wget -P  packages/ http://hnd2.rs4.us/1.4/libxtables12_1.8.7-1_amd64.deb
+         wget -P  packages/ http://http.us.debian.org/debian/pool/main/i/ipset/libipset13_7.17-1_amd64.deb
+         wget -P  packages/ http://http.us.debian.org/debian/pool/main/i/ipset/ipset_7.17-1_amd64.deb 
+         wget -P  packages/ http://hnd2.rs4.us/1.4/iptables_1.8.9-2_amd64.deb
+         wget -P  packages/ http://hnd2.rs4.us/1.4/libip4tc2_1.8.9-2_amd64.deb 
+         wget -P  packages/ http://hnd2.rs4.us/1.4/libip6tc2_1.8.9-2_amd64.deb
+         wget -P  packages/ http://hnd2.rs4.us/1.4/libiptc0_1.8.9-2_amd64.deb
+         wget -P  packages/ http://hnd2.rs4.us/1.4/libxtables12_1.8.9-2_amd64.deb
         # wget -P  packages/ http://hnd2.rs4.us/1.4/vyos-intel-qat_1.7.L.4.20.0-00001-0_amd64.deb
         # wget -P  packages/ http://hnd2.rs4.us/1.4/linux-headers-6.1.8-amd64-vyos_6.1.8-1_amd64.deb 
         # wget -P  packages/ http://hnd2.rs4.us/1.4/linux-image-6.1.8-amd64-vyos_6.1.8-1_amd64.deb
         # wget -P  packages/ http://hnd2.rs4.us/1.4/linux-tools-6.1.8-amd64-vyos_6.1.8-1_amd64.deb
         # wget -P  packages/ http://hnd2.rs4.us/1.4/linux-libc-dev_6.1.8-1_amd64.deb
     
-    - name: build kernel
-      run:  |
-        set -eux
-        pwd
-        cd vyos-build/packages/linux-kernel
-        wget https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.1.8.tar.xz
-        tar xf linux-6.1.8.tar.xz
-        ln -s linux-6.1.8 linux
-        ./build-kernel.sh
-        cp *.deb ../
-    - name: make deb
-      run: |
-        set -eux
-        pwd
-        cd vyos-build/packages/linux-kernel
-        ./build-intel-qat.sh
-        cp vyos-intel-qat*.deb ../
+    - name: Download kernel deb from my another repo
+      uses: robinraju/release-downloader@v1.7
+      with:
+       repository: "debiansid/vyos-kernel-sv-fullconenat"
+       latest: true
+       fileName: "*.deb"
+       out-file-path: "vyos-build/packages/"
         
     - name: make iso
       working-directory: vyos-build
