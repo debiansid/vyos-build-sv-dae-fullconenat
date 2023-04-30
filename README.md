@@ -1,4 +1,3 @@
-[![VyOS 1.4 sv eBFP fullconenat Build and Release](https://github.com/debiansid/vyos-build-sv-dae-fullconenat/actions/workflows/vyos_sv_eBPF_fullconenat_build_release.yml/badge.svg?branch=dev)](https://github.com/debiansid/vyos-build-sv-dae-fullconenat/actions/workflows/vyos_sv_eBPF_fullconenat_build_release.yml)
 
 VyOS toplevel build
 ===================
