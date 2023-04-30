@@ -1,0 +1,91 @@
+name: VyOS sv dae fullconenat Build and Release
+permissions:
+  contents: write
+on:
+  push:
+    tags:
+      - "*"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container: 
+      # For VyOS 1.2 (crux) use vyos/vyos-build:crux
+      # For VyOS 1.3 (equuleus) use vyos/vyos-build:equuleus
+      # For our VyOS rolling release you should use vyos/vyos-build which will always refer to the latest image.
+      # Ref: https://docs.vyos.io/en/latest/contributing/build-vyos.html#build
+      # echo "RELEASE_VERSION=1.4.0-sv-dae-fullconenat" >> $GITHUB_ENV 
+      # --version 1.4.0-sv-fullconenat  iso
+
+      image: vyos/vyos-build:current
+      env:
+        TZ: Asia/Shanghai
+      options: --privileged
+      
+
+    steps:
+    - name: Set env
+      run: |
+        echo "RELEASE_VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
+        
+        
+    - name: git clone vyos-build
+      run: |
+        set -eux
+        
+        git clone  -b dev https://github.com/debiansid/vyos-build-sv-dae-fullconenat vyos-build
+
+    
+      
+    - name: Download deb from upstream
+      run:  |
+         set -eux
+         cd vyos-build
+         wget -P  packages/ http://http.us.debian.org/debian/pool/main/i/ipset/libipset13_7.17-1_amd64.deb
+         wget -P  packages/ http://http.us.debian.org/debian/pool/main/i/ipset/ipset_7.17-1_amd64.deb 
+    
+    - name: Download kernel deb from my another repo
+      uses: robinraju/release-downloader@v1.7
+      with:
+       repository: "debiansid/vyos-kernel-rolling"
+       latest: true
+       fileName: "*.deb"
+       out-file-path: "vyos-build/packages/"
+       
+    - name: Download iptables deb from my another repo
+      uses: robinraju/release-downloader@v1.7
+      with:
+       repository: "debiansid/iptables-fullconenat"
+       latest: true
+       fileName: "*.deb"
+       out-file-path: "vyos-build/packages/"
+     
+    - name: make iso
+      working-directory: vyos-build
+      run: |
+        sudo --preserve-env ./build-vyos-image \
+                            --build-by gpt@openai.com \
+                            --build-type release \
+                            --custom-package prometheus-node-exporter \
+                            --version ${{ env.RELEASE_VERSION }} iso
+          
+
+    - name: ls
+      run: |
+        set -eux
+
+        pwd
+        ls -lah
+        ls -lah vyos-build/build
+
+    - name: Upload release
+      uses: softprops/action-gh-release@v1
+      with:
+          tag_name: ${{ github.ref_name }}
+          files: vyos-build/build/vyos-${{ env.RELEASE_VERSION }}-amd64.iso
+          body: |
+            VyOS ${{ env.RELEASE_VERSION }} LTS
+          draft: true
+          prerelease: true
+          
+
